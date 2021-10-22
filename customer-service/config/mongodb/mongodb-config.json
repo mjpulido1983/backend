@@ -1,0 +1,12 @@
+{
+    "mongodb": {
+    "server": "cluster0.6kgbh.mongodb.net",
+    "database": "customers-dev",
+    "user": "proyecto_dv_dev",
+    "password": "Misiontic*",
+    "params": ""
+ }
+
+}
+
+

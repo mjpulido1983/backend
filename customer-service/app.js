@@ -10,7 +10,7 @@ let app = express();
 
 let MongoDBUtil = require('./modules/mongodb/mongodb.module').MongoDBUtil;
 let CustomerController = require('./modules/customer/customer.module')().CustomerController;
-// let ProductController = require('./modules/product/product.module')().ProductController;
+let ProductController = require('./modules/product/product.module')().ProductController;
 
 const admin = require("firebase-admin");
 const serviceAccount = require("./config/firebase/google.json");

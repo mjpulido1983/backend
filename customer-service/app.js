@@ -10,13 +10,13 @@ let app = express();
 
 let MongoDBUtil = require('./modules/mongodb/mongodb.module').MongoDBUtil;
 let CustomerController = require('./modules/customer/customer.module')().CustomerController;
-let ProductController = require('./modules/product/product.module')().ProductController;
+let ProductoController = require('./modules/producto/producto.module')().ProductoController;
 
 const admin = require("firebase-admin");
 const serviceAccount = require("./config/firebase/google.json");
-admin.initializeApp({ 
+admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
- });
+});
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -29,20 +29,20 @@ function checkAuth(req, res, next) {
   if (req.headers?.authorization?.startsWith('Bearer ')) {
     const idToken = req.headers.authorization.split('Bearer ')[1];
     admin.auth().verifyIdToken(idToken)
-      .then(() => { 
-      next()
-     }).catch((error) => {
-       res.status(403).send('No auotorizado por Token Invalido');
-       });
-       
+      .then(() => {
+        next()
+      }).catch((error) => {
+        res.status(403).send('No auotorizado por Token Invalido');
+      });
+
   } else {
-     res.status(403).send('No autorizado por Token Invalido');
- }
+    res.status(403).send('No autorizado por Token Invalido');
+  }
 }
 app.use('*', checkAuth);
 
-app.use('/customers', CustomerController);
-// app.use('/products', ProductController);
+app.use('/vendedores', CustomerController);
+app.use('/productos', ProductoController);
 
 app.get('/', function (req, res) {
   var pkg = require(path.join(__dirname, 'package.json'));

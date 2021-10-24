@@ -27,5 +27,5 @@
         country: String
     });
 
-    module.exports = mongoose.model('customers', CustomerSchema);
+    module.exports = mongoose.model('customer', CustomerSchema);
 })();

@@ -32,7 +32,7 @@ function checkAuth(req, res, next) {
       .then(() => {
         next()
       }).catch((error) => {
-        res.status(403).send('No auotorizado por Token Invalido');
+        res.status(403).send('No autorizado por Token Invalido');
       });
 
   } else {
